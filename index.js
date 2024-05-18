@@ -7,6 +7,11 @@ app.get('/', (req, res) => {
     res.send("HELLO form NODE API")
 })
 
+app.post('/api/products', (req, res) => {
+    console.log(req.body)
+    res.send(req.body)
+})
+
 mongoose.connect('mongodb+srv://gaurav237:9234valorant@backenddb.9a8h9ty.mongodb.net/?retryWrites=true&w=majority&appName=BackendDB')
     .then(() => {
         console.log("Connected to databse!")
