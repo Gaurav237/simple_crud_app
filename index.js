@@ -4,6 +4,8 @@ const Product = require('./models/product.model.js')
 const app = express()
 
 app.use(express.json())
+// Middleware to parse form data
+app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req, res) => {
     res.send("HELLO form NODE API")
