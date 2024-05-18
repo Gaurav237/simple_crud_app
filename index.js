@@ -51,6 +51,20 @@ app.put('/api/product/:id', async(req, res) => {
     }
 })
 
+// delete a product
+app.delete('/api/product/:id', async(req, res) => {
+    try{
+        const { id } = req.params
+        const product = await Product.findByIdAndDelete(id)
+        if(!product){
+            res.status(404).json({message: "Product not found"})
+        }
+        res.status(200).json(product)
+    }catch(err){
+        res.status(500).json({message: err.message})
+    }
+})
+
 mongoose.connect('mongodb+srv://gaurav237:9234valorant@backenddb.9a8h9ty.mongodb.net/?retryWrites=true&w=majority&appName=BackendDB')
     .then(() => {
         console.log("Connected to databse!")
